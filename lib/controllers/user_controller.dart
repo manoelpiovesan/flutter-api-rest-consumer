@@ -22,13 +22,15 @@ class UserController {
   ///
   ///
   ///
-  Future<List<Map<String, dynamic>>> create(Map<String, dynamic> data) async {
-    final response = await http.post(Uri.parse(url), body: data);
+  Future<bool> create(Map<String, dynamic> data) async {
+    final response = await http.post(Uri.parse(url), body: json.encode(data));
+    print(json.encode(data));
 
     if (response.statusCode == 201) {
-      final List<dynamic> jsonData = json.decode(response.body);
-      return jsonData.cast<Map<String, dynamic>>();
+      return true;
     } else {
+      print(response.statusCode);
+      print(response.body);
       throw Exception('Failed to load data');
     }
   }

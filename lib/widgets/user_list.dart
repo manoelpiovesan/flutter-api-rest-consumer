@@ -30,17 +30,27 @@ class _UserListWidgetState extends State<UserListWidget> {
               itemCount: snapshot.data?.length,
               itemBuilder: (ctx, index) {
                 return ListTile(
-                  title: Text(snapshot.data?[index]['name']),
-                  subtitle: Text(snapshot.data?[index]['email']),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete),
-                    onPressed: () async {
-                      await UserController()
-                          .delete(snapshot.data?[index]['_id']);
-                      setState(() {});
-                    },
-                  ),
-                );
+                    title: Text(snapshot.data?[index]['name']),
+                    subtitle: Text(snapshot.data?[index]['email']),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.delete),
+                          onPressed: () async {
+                            await UserController()
+                                .delete(snapshot.data?[index]['_id']);
+                            setState(() {});
+                          },
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.edit),
+                          onPressed: () {
+                            
+                          },
+                        ),
+                      ],
+                    ));
               });
         });
   }

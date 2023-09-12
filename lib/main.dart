@@ -1,4 +1,6 @@
 import 'package:api_rest_front_flutter/screens/home_screen.dart';
+import 'package:api_rest_front_flutter/screens/user_create_form_screen.dart';
+import 'package:api_rest_front_flutter/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -21,6 +23,10 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: const HomeScreen(),
+
+      routes: {
+        AppRoutes.CREATE_USER_FORM: (ctx) => const UserCreateFormScreen(),
+      },
     );
   }
 }
